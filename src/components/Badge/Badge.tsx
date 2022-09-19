@@ -1,19 +1,13 @@
 import React from "react";
-import "./styles/badge.css";
+import { BadgeWrapper } from "./styles/badgeStyles";
 
-interface BadgeProps {
-  /**
-   * Select from the 3 variant available.
-   */
+export interface BadgeProps {
   variant: "solid" | "outline" | "subtle";
-  /**
-   * Badge contents
-   */
   label?: string;
 }
 
 const Badge = ({ variant, label = "Default" }: BadgeProps) => {
-  return <span className={`badge badge--${variant}`}>{label}</span>;
+  return <BadgeWrapper variant={variant}>{label}</BadgeWrapper>;
 };
 
 export default Badge;

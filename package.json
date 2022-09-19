@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "polished": "^4.2.2",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -30,6 +31,11 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
+  },
+  "engines": {
+    "node": ">=10",
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.22.19"
   },
   "eslintConfig": {
     "extends": [
