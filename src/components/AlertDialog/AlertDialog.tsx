@@ -2,14 +2,14 @@ import React from "react";
 import { CloseIcon } from "../../assets";
 import { Dialogwrapper } from "./styles/alertDialogStyles";
 
-interface Props {
+export interface AlertDialogProps {
   title: string;
   text: string;
   onClick: () => void;
   position?: "topLeft" | "bottomLeft" | "topRight" | "bottomRight";
 }
 
-const AlertDialog: React.FC<Props> = ({
+export const AlertDialog: React.FC<AlertDialogProps> = ({
   title,
   text,
   position = "bottomLeft",
@@ -33,5 +33,3 @@ const AlertDialog: React.FC<Props> = ({
     </Dialogwrapper>
   );
 };
-
-export default AlertDialog;

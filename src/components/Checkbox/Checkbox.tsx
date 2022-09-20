@@ -1,12 +1,12 @@
 import React from "react";
 import { CheckboxContainer, CheckboxField } from "./styles/checkboxStyles";
 
-interface Props {
+export interface CheckboxProps {
   isChecked: boolean;
   disabled: boolean;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-export const Checkbox: React.FC<Props> = ({
+export const Checkbox: React.FC<CheckboxProps> = ({
   isChecked,
   onChange,
   disabled,

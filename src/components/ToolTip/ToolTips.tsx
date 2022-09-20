@@ -3,17 +3,19 @@
 import React from "react";
 import { Position, Tooltip } from "react-tippy";
 import "react-tippy/dist/tippy.css";
-interface Prop {
+export interface ToolTipsProps {
   children: React.ReactNode;
   text: string;
   position?: Position;
 }
-const ToolTips = ({ children, text, position = "bottom" }: Prop) => {
+export const ToolTips: React.FC<ToolTipsProps> = ({
+  children,
+  text,
+  position = "bottom",
+}) => {
   return (
     <Tooltip title={`${text}`} arrow={true} position={`${position}`}>
       <span>{children}</span>
     </Tooltip>
   );
 };
-
-export default ToolTips;

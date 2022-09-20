@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
+export const CheckboxField = styled.input`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+`;
+
 export const CheckboxContainer = styled.label`
+  position: relative;
   .checkmark {
     position: absolute;
     top: 0;
@@ -12,68 +21,52 @@ export const CheckboxContainer = styled.label`
     border-radius: 2px;
   }
 
-  &:hover input:not(:disabled) ~ .checkmark {
-    background-color: #2b6cb0;
-  }
-
-  & input:disabled ~ .checkmark {
-    background-color: #e2e8f0;
-  }
-
-  & input:disabled ~ .checkmark:hover::after {
-    display: none;
-  }
-
-  & input:checked:disabled ~ .checkmark {
-    background-color: #e2e8f0;
-    border: 2px solid #e2e8f0;
-  }
-
-  & input:checked:disabled ~ .checkmark:after {
-    display: block;
-    border: solid #718096;
+  .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-radius: 2px;
     border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 
-  & input:checked ~ .checkmark {
-    background-color: #3182ce;
-  }
-
-  /* Create the checkmark/indicator (hidden when not checked) */
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
 
-  /* Show the checkmark when hovered */
-  & input:hover ~ .checkmark:after {
-    display: block;
+  .checkmark:hover {
+    background-color: #2b6cb0;
   }
 
-  /* Show the checkmark when checked */
-  & input:checked ~ .checkmark:after {
+  .checkmark:hover:after {
     display: block;
-  }
-
-  /* Style the checkmark/indicator */
-  & .checkmark:after {
-    left: 5px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
     border: solid white;
     border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
   }
-`;
 
-export const CheckboxField = styled.input`
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+  ${CheckboxField}:checked ~ .checkmark {
+    background-color: #3182ce;
+  }
+
+  ${CheckboxField}:checked ~ .checkmark:after {
+    display: block;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+  }
+
+  ${CheckboxField}:disabled ~ .checkmark {
+    background-color: #e2e8f0;
+  }
+
+  ${CheckboxField}:checked:disabled ~ .checkmark:after {
+    display: block;
+    border: solid #718096;
+    border-width: 0 3px 3px 0;
+  }
 `;

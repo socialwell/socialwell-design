@@ -3,12 +3,10 @@ import { CloseIcon } from "../../assets";
 
 import { Button } from "./styles/closeBtnStyles";
 
-const CloseButton = ({ ...restProps }) => {
+export const CloseButton = ({ ...restProps }) => {
   return (
     <Button {...restProps}>
       <CloseIcon />
     </Button>
   );
 };
-
-export default CloseButton;

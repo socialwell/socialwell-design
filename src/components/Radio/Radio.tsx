@@ -1,12 +1,12 @@
 import React from "react";
 import { RadioField } from "./styles/radioStyles";
 
-interface Props {
+export interface RadioProps {
   isChecked: boolean;
   disabled?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const Radio: React.FC<Props> = ({
+export const Radio: React.FC<RadioProps> = ({
   isChecked,
   onChange,
   disabled = false,
@@ -24,5 +24,3 @@ const Radio: React.FC<Props> = ({
     </>
   );
 };
-
-export default Radio;

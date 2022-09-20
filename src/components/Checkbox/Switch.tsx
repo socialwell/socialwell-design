@@ -2,13 +2,13 @@ import React from "react";
 import {} from "./styles/checkboxStyles";
 import { SwitchButton, SwitchInput, SwitchLabel } from "./styles/switchStyles";
 
-interface Props {
+export interface SwitchProps {
   size: "md" | "lg";
   isChecked: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Switch: React.FC<Props> = ({
+export const Switch: React.FC<SwitchProps> = ({
   size = "md",
   isChecked,
   onChange,

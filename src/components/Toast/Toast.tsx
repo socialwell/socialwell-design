@@ -7,12 +7,12 @@ import {
   WarningIcon,
 } from "../../assets";
 import { ToastWrapper, Text, Title } from "./styles/toastStyles";
-export interface Props {
+export interface ToastProps {
   state: "error" | "success" | "warning" | "info";
   title: string;
   description?: string;
 }
-const Toast = ({ state, title, description }: Props) => {
+export const Toast: React.FC<ToastProps> = ({ state, title, description }) => {
   return (
     <ToastWrapper state={state}>
       <div className="content">
@@ -49,5 +49,3 @@ const Toast = ({ state, title, description }: Props) => {
     </ToastWrapper>
   );
 };
-
-export default Toast;

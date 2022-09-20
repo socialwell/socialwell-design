@@ -7,13 +7,18 @@ import {
   WarningIcon,
 } from "../../assets";
 import { AlertWrapper, Text, Title } from "./styles/alertStyles";
-export interface Props {
+export interface AlertProps {
   state: "error" | "success" | "warning" | "info";
   title: string;
   description: string;
   inline?: boolean;
 }
-const Alert = ({ state, title, description, inline = false }: Props) => {
+export const Alert: React.FC<AlertProps> = ({
+  state,
+  title,
+  description,
+  inline = false,
+}) => {
   return (
     <AlertWrapper inline={inline} state={state}>
       <div className="content">
@@ -50,5 +55,3 @@ const Alert = ({ state, title, description, inline = false }: Props) => {
     </AlertWrapper>
   );
 };
-
-export default Alert;

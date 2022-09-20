@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import CloseButton from "./CloseButton";
+import { CloseButton } from "./CloseButton";
 
 export default {
   title: "Components/CloseButton",

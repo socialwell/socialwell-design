@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import FormControl from "./FormControl";
+import { FormControl } from "./FormControl";
 
 export default {
   title: "Components/FormControl",

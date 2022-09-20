@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import AlertDialog from "./AlertDialog";
+import { AlertDialog } from "./AlertDialog";
 
 export default {
   title: "Components/AlertDialog",

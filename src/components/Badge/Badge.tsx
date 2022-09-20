@@ -6,8 +6,6 @@ export interface BadgeProps {
   label?: string;
 }
 
-const Badge = ({ variant, label = "Default" }: BadgeProps) => {
+export const Badge: React.FC<BadgeProps> = ({ variant, label = "Default" }) => {
   return <BadgeWrapper variant={variant}>{label}</BadgeWrapper>;
 };
-
-export default Badge;

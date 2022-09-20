@@ -2,12 +2,12 @@ import React from "react";
 import { Button } from "./styles/iconBtnStyles";
 import { BtnLeftIcon } from "../../assets";
 
-export interface Props {
+export interface IconButtonProps {
   variant?: "outline" | "ghost";
   size?: "md" | "lg";
 }
 
-const IconButton: React.FC<Props> = ({
+export const IconButton: React.FC<IconButtonProps> = ({
   variant = "outline",
   size = "md",
   ...restProps
@@ -18,5 +18,3 @@ const IconButton: React.FC<Props> = ({
     </Button>
   );
 };
-
-export default IconButton;

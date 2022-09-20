@@ -7,7 +7,7 @@ import {
   Textarea,
 } from "./styles/formControlStyles";
 
-export interface Props {
+export interface FormControlProps {
   children?: React.ReactNode;
   type: "text" | "select" | "textarea";
   size?: "sm" | "md";
@@ -21,7 +21,7 @@ export interface Props {
   ) => void;
 }
 
-const FormControl: React.FC<Props> = ({
+export const FormControl: React.FC<FormControlProps> = ({
   children,
   type = "text",
   size = "md",
@@ -54,5 +54,3 @@ const FormControl: React.FC<Props> = ({
     </FormControlWrapper>
   );
 };
-
-export default FormControl;

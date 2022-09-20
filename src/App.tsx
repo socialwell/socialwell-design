@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Badge, FormControl } from "./components";
+import { Checkbox, Badge, FormControl } from "./components";
 
 function App() {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("1");
   const [bio, setBio] = useState("");
+  const [checked, setChecked] = useState(false);
+  console.log(checked);
 
   return (
     <div className="App">
@@ -36,6 +38,13 @@ function App() {
           label="bio"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
+        />
+      </div>
+      <div className="card">
+        <Checkbox
+          isChecked={checked}
+          onChange={() => setChecked(() => !checked)}
+          disabled={false}
         />
       </div>
     </div>

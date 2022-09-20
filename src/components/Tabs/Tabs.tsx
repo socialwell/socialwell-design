@@ -1,17 +1,15 @@
 import React from "react";
 import { TabContainer } from "./styles/tabsStyles";
 
-export interface DataProps {
-  name: string;
-  isActive: boolean;
-}
-
-interface Props {
+export interface TabsProps {
   isSolid?: boolean;
-  data: DataProps[];
+  data: {
+    name: string;
+    isActive: boolean;
+  }[];
 }
 
-const Tabs = ({ isSolid = false, data }: Props) => {
+export const Tabs: React.FC<TabsProps> = ({ isSolid = false, data }) => {
   return (
     <TabContainer isSolid={isSolid}>
       {data.map(({ name, isActive }, index) => (
@@ -22,5 +20,3 @@ const Tabs = ({ isSolid = false, data }: Props) => {
     </TabContainer>
   );
 };
-
-export default Tabs;
