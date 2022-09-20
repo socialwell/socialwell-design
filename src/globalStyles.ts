@@ -14,6 +14,9 @@ html{
   padding: 0;
   box-sizing: inherit;
 }
+h1{
+  margin: 0;
+}
 
 body {
   font-family: "Inter", sans-serif;

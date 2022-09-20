@@ -59,6 +59,7 @@ export const Dialogwrapper = styled.div<{ position: string }>`
 
   p {
     margin-block: 16px;
+    color: #2d3748;
   }
 
   .btn {
