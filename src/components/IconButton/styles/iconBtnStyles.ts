@@ -6,6 +6,8 @@ interface Props {
 }
 
 export const Button = styled.button<Props>`
+  box-sizing: border-box;
+
   width: ${(props) => (props.btnSize === "md" ? "40px" : "48px")};
   height: ${(props) => (props.btnSize === "md" ? "40px" : "48px")};
   background: none;

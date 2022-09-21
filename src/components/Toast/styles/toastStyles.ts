@@ -4,6 +4,8 @@ interface Props {
 }
 
 export const ToastWrapper = styled.div<Props>`
+  box-sizing: border-box;
+
   width: 400px;
   display: flex;
   flex-direction: row;
@@ -54,11 +56,15 @@ export const ToastWrapper = styled.div<Props>`
   }
 `;
 export const Title = styled.div`
+  box-sizing: border-box;
+
   font-weight: 700;
   font-size: 16px;
   color: #2d3748;
 `;
 export const Text = styled.div`
+  box-sizing: border-box;
+
   font-weight: 400;
   font-size: 16px;
   color: #2d3748;

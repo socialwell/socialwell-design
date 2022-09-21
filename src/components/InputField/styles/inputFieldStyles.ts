@@ -24,6 +24,8 @@ const getSize = (size: string) => {
 };
 
 export const NumberInput = styled.input<Props>`
+  box-sizing: border-box;
+
   width: 100%;
   height: ${(props) => getSize(props.inputSize)};
   outline: none;
@@ -42,9 +44,17 @@ export const NumberInput = styled.input<Props>`
   &:disabled {
     opacity: 0.5;
   }
+
+  ${(props) =>
+    props.isInvalid &&
+    css`
+      border: 2px solid #e53e3e;
+    `}
 `;
 
 export const InputWrapper = styled.div<Props>`
+  box-sizing: border-box;
+
   width: 100%;
   height: ${(props) => (props.inputSize === "md" ? "40px" : "48px")};
   display: flex;
@@ -78,6 +88,8 @@ export const InputWrapper = styled.div<Props>`
 `;
 
 export const SelectInputField = styled.select<Props>`
+  box-sizing: border-box;
+
   width: 100%;
   height: ${(props) => (props.inputSize === "md" ? "40px" : "48px")};
   outline: none;
@@ -106,6 +118,7 @@ export const SelectInputField = styled.select<Props>`
 
 export const TextAreaInputField = styled.textarea<TextareaProps>`
   width: 100%;
+  box-sizing: border-box;
 
   padding: 8px 16px;
   outline: none;

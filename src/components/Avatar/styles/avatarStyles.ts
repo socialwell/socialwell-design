@@ -8,6 +8,7 @@ const getImageSize = function (size: string) {
 };
 
 export const Image = styled.img<{ size: string }>`
+  box-sizing: border-box;
   width: ${(props) => getImageSize(props.size)};
   height: ${(props) => getImageSize(props.size)};
 

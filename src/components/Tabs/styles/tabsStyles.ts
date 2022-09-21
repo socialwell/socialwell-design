@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const TabContainer = styled.ul<{ isSolid: boolean }>`
   width: 100%;
+  box-sizing: border-box;
 
   display: flex;
   gap: 20px;

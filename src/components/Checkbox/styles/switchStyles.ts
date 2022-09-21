@@ -7,6 +7,8 @@ export const SwitchInput = styled.input`
 `;
 
 export const SwitchLabel = styled.label<{ labelSize: string }>`
+  box-sizing: border-box;
+
   display: flex;
   align-items: center;
   justify-content: space-between;

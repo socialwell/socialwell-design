@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 export const AvatarImage = Template.bind({});
 
 AvatarImage.args = {
-  src: "https://ui-avatars.com/api/?name=prabodh%20gedam&size=128&background=285E61&color=fff",
+  useName: "prabodh gedam",
 };
 
 export const AvatarPlaceholderImage = Template.bind({});

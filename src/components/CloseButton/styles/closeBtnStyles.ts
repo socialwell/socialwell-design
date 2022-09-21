@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
+  box-sizing: border-box;
+
   width: 40px;
   height: 40px;
   display: flex;

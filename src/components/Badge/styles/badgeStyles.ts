@@ -5,6 +5,7 @@ interface Props {
 }
 
 export const BadgeWrapper = styled.span<Props>`
+  box-sizing: border-box;
   width: fit-content;
   height: 18px;
   display: flex;

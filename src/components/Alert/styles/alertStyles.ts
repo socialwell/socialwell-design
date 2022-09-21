@@ -5,6 +5,7 @@ interface Props {
 }
 
 export const AlertWrapper = styled.div<Props>`
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -66,9 +67,11 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 16px;
   color: #2d3748;
+  box-sizing: border-box;
 `;
 export const Text = styled.div`
   font-weight: 400;
   font-size: 16px;
   color: #2d3748;
+  box-sizing: border-box;
 `;

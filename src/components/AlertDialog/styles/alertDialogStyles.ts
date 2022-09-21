@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Dialogwrapper = styled.div<{ position: string }>`
+  box-sizing: border-box;
   position: fixed;
   width: 448px;
   height: 172px;

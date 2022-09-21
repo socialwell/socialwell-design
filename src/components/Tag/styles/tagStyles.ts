@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const TagWrapper = styled.span`
+  box-sizing: border-box;
+
   width: fit-content;
   height: 32px;
   display: flex;

@@ -5,6 +5,7 @@ interface Props {
 }
 
 export const MainButton = styled.button<Props>`
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: center;

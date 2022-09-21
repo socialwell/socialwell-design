@@ -9,6 +9,8 @@ export const CheckboxField = styled.input`
 `;
 
 export const CheckboxContainer = styled.label`
+  box-sizing: border-box;
+
   position: relative;
   .checkmark {
     position: absolute;

@@ -9,6 +9,8 @@ enum RadioColors {
 }
 
 export const RadioField = styled.input`
+  box-sizing: border-box;
+
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
