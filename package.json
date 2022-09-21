@@ -36,9 +36,9 @@
     "build-storybook": "build-storybook -s public"
   },
   "engines": {
-    "node": ">=10",
-    "npm": "please-use-yarn",
-    "yarn": ">= 1.22.19"
+    "node": ">=16.17.0",
+    "yarn": ">= 1.22.19",
+    "npm": "please-use-yarn"
   },
   "eslintConfig": {
     "extends": [
