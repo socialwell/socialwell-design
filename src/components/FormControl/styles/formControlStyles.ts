@@ -13,6 +13,7 @@ export const Label = styled.label`
   line-height: 24px;
   color: #2d3748;
   box-sizing: border-box;
+  margin-bottom: 8px;
 `;
 
 export const Input = styled.input<{ inputSize: string }>`
@@ -37,7 +38,7 @@ export const Select = styled.select<{ inputSize: string }>`
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
-  padding: 8px 16px;
+  padding: 0px 16px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;

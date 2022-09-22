@@ -7,6 +7,7 @@ export interface ButtonProps {
   size?: "md" | "lg";
   name: string;
   icon?: boolean;
+  type: "submit" | "button" | "reset";
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -14,11 +15,12 @@ export const Button: React.FC<ButtonProps> = ({
   name,
   size = "md",
   icon = false,
+  type = "submit",
   ...restProps
 }) => {
   if (variant === "solid") {
     return (
-      <SolidButton size={size} {...restProps}>
+      <SolidButton size={size} type={type} {...restProps}>
         {icon && <BtnLeftIcon />}
         {name}
       </SolidButton>
@@ -26,7 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
   }
   if (variant === "outline") {
     return (
-      <OutlineButton size={size} {...restProps}>
+      <OutlineButton size={size} type={type} {...restProps}>
         {icon && <BtnLeftIcon />}
         {name}
       </OutlineButton>

@@ -26,7 +26,10 @@ body {
 
 .App {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+  place-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
 }
 
 .card {

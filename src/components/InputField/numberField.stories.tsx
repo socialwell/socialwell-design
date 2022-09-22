@@ -1,19 +1,23 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { NumberField } from "./InputField";
+import { TextField } from "./InputField";
 
 export default {
   title: "Components/InputField",
-  component: NumberField,
+  component: TextField,
   argTypes: {
     disabled: { control: "boolean", default: false },
     // isInvalid: { control: "boolean", default: false },
   },
-} as ComponentMeta<typeof NumberField>;
+} as ComponentMeta<typeof TextField>;
 
-const Template: ComponentStory<typeof NumberField> = (args) => (
-  <NumberField {...args} />
+const Template: ComponentStory<typeof TextField> = (args) => (
+  <TextField {...args} />
 );
 
 export const NumberInput = Template.bind({});
+
+NumberInput.args = {
+  type: "number",
+};

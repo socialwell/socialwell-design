@@ -9,10 +9,12 @@ import {
 
 export interface FormControlProps {
   children?: React.ReactNode;
-  type: "text" | "select" | "textarea";
+  inputType: "text" | "select" | "textarea";
   size?: "sm" | "md";
   label: string;
+  type?: string;
   value: string;
+  name: string;
   onChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -23,34 +25,49 @@ export interface FormControlProps {
 
 export const FormControl: React.FC<FormControlProps> = ({
   children,
-  type = "text",
+  inputType = "text",
   size = "md",
   label,
+  name,
   value,
+  type = "text",
   onChange,
 }) => {
-  if (type === "select") {
+  if (inputType === "select") {
     return (
       <FormControlWrapper>
         <Label htmlFor={label}>{label}</Label>
-        <Select inputSize={size} id={label} value={value} onChange={onChange}>
+        <Select
+          inputSize={size}
+          id={label}
+          name={name}
+          value={value}
+          onChange={onChange}
+        >
           {children}
         </Select>
       </FormControlWrapper>
     );
   }
-  if (type === "textarea") {
+  if (inputType === "textarea") {
     return (
       <FormControlWrapper>
         <Label htmlFor={label}>{label}</Label>
-        <Textarea id={label} value={value} onChange={onChange} />
+        <Textarea id={label} value={value} name={name} onChange={onChange} />
       </FormControlWrapper>
     );
   }
   return (
     <FormControlWrapper>
       <Label htmlFor={label}>{label}</Label>
-      <Input inputSize={size} id={label} value={value} onChange={onChange} />
+      <Input
+        inputSize={size}
+        type={type}
+        id={label}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
     </FormControlWrapper>
   );
 };

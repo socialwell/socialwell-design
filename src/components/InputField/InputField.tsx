@@ -3,7 +3,6 @@ import { BtnLeftIcon } from "../../assets";
 import {
   InputWrapper,
   TextInput,
-  NumberInput,
   SelectInputField,
   TextAreaInputField,
 } from "./styles/inputFieldStyles";
@@ -13,13 +12,8 @@ export interface InputTextProps {
   hasIcon?: boolean;
   isInvalid?: boolean;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-export interface InputNumberProps {
-  size?: "sm" | "md" | "lg";
-  isInvalid?: boolean;
-  value: number;
+  name: string;
+  type: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -43,32 +37,21 @@ export const TextField: React.FC<InputTextProps> = ({
   isInvalid = false,
   value,
   onChange,
+  name,
+  type = "text",
   ...restProps
 }) => {
   return (
     <InputWrapper inputSize={size} isInvalid={isInvalid}>
       {hasIcon && <BtnLeftIcon />}
-      <TextInput {...restProps} value={value} onChange={onChange} />
+      <TextInput
+        {...restProps}
+        value={value}
+        name={name}
+        type={type}
+        onChange={onChange}
+      />
     </InputWrapper>
-  );
-};
-
-export const NumberField: React.FC<InputNumberProps> = ({
-  size = "md",
-  isInvalid = false,
-  value,
-  onChange,
-  ...restProps
-}) => {
-  return (
-    <NumberInput
-      type="number"
-      {...restProps}
-      value={value}
-      onChange={onChange}
-      inputSize={size}
-      isInvalid={isInvalid}
-    />
   );
 };
 

@@ -10,11 +10,9 @@ export { FormControl, type FormControlProps } from "./FormControl/FormControl";
 export { IconButton, type IconButtonProps } from "./IconButton/IconButton";
 export {
   TextField,
-  NumberField,
   SelectField,
   TextAreaField,
   type InputTextProps,
-  type InputNumberProps,
   type SelectProps,
   type TextareaProps,
 } from "./InputField/InputField";

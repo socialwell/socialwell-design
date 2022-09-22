@@ -23,40 +23,11 @@ const getSize = (size: string) => {
   return "40px";
 };
 
-export const NumberInput = styled.input<Props>`
-  box-sizing: border-box;
-
-  width: 100%;
-  height: ${(props) => getSize(props.inputSize)};
-  outline: none;
-  border: 1px solid #e2e8f0;
-  padding: 8px 16px;
-  border-radius: 6px;
-
-  &:hover {
-    border: 1px solid #cbd5e0;
-  }
-
-  &:focus {
-    border: 2px solid #3182ce;
-  }
-
-  &:disabled {
-    opacity: 0.5;
-  }
-
-  ${(props) =>
-    props.isInvalid &&
-    css`
-      border: 2px solid #e53e3e;
-    `}
-`;
-
 export const InputWrapper = styled.div<Props>`
   box-sizing: border-box;
 
   width: 100%;
-  height: ${(props) => (props.inputSize === "md" ? "40px" : "48px")};
+  height: ${(props) => getSize(props.inputSize)};
   display: flex;
   align-items: center;
   padding: 0px 16px;
@@ -91,7 +62,7 @@ export const SelectInputField = styled.select<Props>`
   box-sizing: border-box;
 
   width: 100%;
-  height: ${(props) => (props.inputSize === "md" ? "40px" : "48px")};
+  height: ${(props) => getSize(props.inputSize)};
   outline: none;
   background: #ffffff;
   border: 1px solid #e2e8f0;
