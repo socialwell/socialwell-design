@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLInputTypeAttribute } from "react";
 import {
   FormControlWrapper,
   Input,
@@ -12,7 +12,7 @@ export interface FormControlProps {
   inputType: "text" | "select" | "textarea";
   size?: "sm" | "md";
   label: string;
-  type?: string;
+  type?: HTMLInputTypeAttribute;
   value: string;
   name: string;
   onChange: (

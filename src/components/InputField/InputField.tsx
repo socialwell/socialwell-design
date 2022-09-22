@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLInputTypeAttribute } from "react";
 import { BtnLeftIcon } from "../../assets";
 import {
   InputWrapper,
@@ -13,7 +13,7 @@ export interface InputTextProps {
   isInvalid?: boolean;
   value: string;
   name: string;
-  type: string;
+  type: HTMLInputTypeAttribute;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

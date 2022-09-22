@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import styled from "styled-components";
-import { Checkbox, Badge, FormControl, Button, TextField } from "./components";
+import { FormControl, Button, TextField } from "./components";
 
 function App() {
   const [data, setData] = useState({
