@@ -11,8 +11,14 @@ export interface ToastProps {
   state: "error" | "success" | "warning" | "info";
   title: string;
   description?: string;
+  onClose: () => void;
 }
-export const Toast: React.FC<ToastProps> = ({ state, title, description }) => {
+export const Toast: React.FC<ToastProps> = ({
+  state,
+  title,
+  description,
+  onClose,
+}) => {
   return (
     <ToastWrapper state={state}>
       <div className="content">
@@ -43,7 +49,7 @@ export const Toast: React.FC<ToastProps> = ({ state, title, description }) => {
           {description && <Text>{description}</Text>}
         </div>
       </div>
-      <button>
+      <button onClick={onClose}>
         <CloseIcon />
       </button>
     </ToastWrapper>

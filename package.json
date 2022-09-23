@@ -2,6 +2,7 @@
   "name": "socialwell-design",
   "version": "0.1.0",
   "private": true,
+  "main": "src/index.js",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -9,6 +10,11 @@
     "react-tippy": "^1.4.0",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-tippy": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,7 +29,7 @@
   },
   "engines": {
     "node": ">=16.17.0",
-    "yarn": ">= 1.22.19",
+    "yarn": ">= 1.22.0",
     "npm": "please-use-yarn"
   },
   "eslintConfig": {

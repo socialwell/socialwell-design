@@ -12,12 +12,14 @@ export interface AlertProps {
   title: string;
   description: string;
   inline?: boolean;
+  onClose: () => void;
 }
 export const Alert: React.FC<AlertProps> = ({
   state,
   title,
   description,
   inline = false,
+  onClose,
 }) => {
   return (
     <AlertWrapper inline={inline} state={state}>
@@ -49,7 +51,7 @@ export const Alert: React.FC<AlertProps> = ({
           <Text>{description}</Text>
         </div>
       </div>
-      <button>
+      <button onClick={onClose}>
         <CloseIcon />
       </button>
     </AlertWrapper>

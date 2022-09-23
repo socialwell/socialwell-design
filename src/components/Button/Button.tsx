@@ -8,6 +8,7 @@ export interface ButtonProps {
   name: string;
   icon?: boolean;
   type: "submit" | "button" | "reset";
+  onClick?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -16,11 +17,12 @@ export const Button: React.FC<ButtonProps> = ({
   size = "md",
   icon = false,
   type = "submit",
+  onClick,
   ...restProps
 }) => {
   if (variant === "solid") {
     return (
-      <SolidButton size={size} type={type} {...restProps}>
+      <SolidButton size={size} type={type} onClick={onClick} {...restProps}>
         {icon && <BtnLeftIcon />}
         {name}
       </SolidButton>
@@ -28,12 +30,16 @@ export const Button: React.FC<ButtonProps> = ({
   }
   if (variant === "outline") {
     return (
-      <OutlineButton size={size} type={type} {...restProps}>
+      <OutlineButton size={size} type={type} onClick={onClick} {...restProps}>
         {icon && <BtnLeftIcon />}
         {name}
       </OutlineButton>
     );
   }
 
-  return <MainButton size={size}>{name}</MainButton>;
+  return (
+    <MainButton size={size} onClick={onClick}>
+      {name}
+    </MainButton>
+  );
 };
