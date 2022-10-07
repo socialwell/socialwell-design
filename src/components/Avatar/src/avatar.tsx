@@ -3,11 +3,13 @@ import { Image } from "./styles/avatarStyles";
 
 export interface AvatarProps {
   src?: string;
-  alt: string;
-  size: "lg" | "xl" | "2xl";
+  alt?: string;
+  size: "sm" | "md" | "lg" | "xl" | "2xl";
   useName?: string;
 }
 const getSize = (size: string): number => {
+  if (size === "sm") return 32;
+  if (size === "md") return 48;
   if (size === "xl") return 96;
   if (size === "2xl") return 128;
 
@@ -15,7 +17,7 @@ const getSize = (size: string): number => {
 };
 export const Avatar: React.FC<AvatarProps> = ({
   src,
-  alt,
+  alt = "",
   size = "lg",
   useName,
 }) => {

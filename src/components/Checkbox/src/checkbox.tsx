@@ -14,14 +14,17 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   label = "",
   ...restProps
 }) => {
+  const randomLabel = Math.random() * 99999;
   return (
-    <CheckboxContainer htmlFor={`${label === "" ? "" : label}`}>
+    <CheckboxContainer
+      htmlFor={`${label === "" ? "" : `label-${randomLabel}`}`}
+    >
       <CheckboxField
         type="checkbox"
         onChange={onChange}
         checked={isChecked}
         disabled={disabled}
-        id={`${label === "" ? "" : label}`}
+        id={`${label === "" ? "" : `label-${randomLabel}`}`}
         {...restProps}
       />
       <span className="checkmark"></span>
