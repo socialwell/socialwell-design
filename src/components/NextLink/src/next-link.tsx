@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "./styles/linkStyles";
 
 export interface NextLinkProps {

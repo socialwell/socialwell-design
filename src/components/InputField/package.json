@@ -1,6 +1,6 @@
 {
   "name": "@socialwell-design/input-field",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Input Field component from socialwell ui library",
   "main": "dist/cjs/components/InputField/src/index.js",
   "module": "dist/esm/components/InputField/src/index.js",
@@ -15,7 +15,9 @@
   "scripts": {
     "build": "rimraf dist && npm run build:esm && npm run build:cjs",
     "build:esm": "tsc --outDir dist/esm",
-    "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
   },
   "keywords": [],
   "author": "Socialwell",

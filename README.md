@@ -3,27 +3,21 @@
 ## Installation
 
 ```bash
-yarn
-```
-
-## To run the project
-
-```bash
-yarn storybook
-```
-
-## To build the storybook into static files
-
-```bash
-yarn build-storybook
-```
-
-## we have lint installed in the project to run the lint
-
-```bash
-yarn lint
+yarn add socialwell-design
 
 or
 
-yarn lint:fix
+npm i socialwell-design
+```
+
+## How to use
+
+```JSX
+import { Button } from "socialwell-design";
+
+<Button
+  name="Button"
+  variant="solid" // solid | outline
+  size="md" // md | lg
+/>
 ```

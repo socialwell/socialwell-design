@@ -20,8 +20,9 @@ export {
   type SelectProps,
   type TextareaProps,
 } from "./InputField/src";
-export { Radio, type RadioProps } from "./Radio/Radio";
-export { Tabs, type TabsProps } from "./Tabs/Tabs";
+export { Radio, type RadioProps } from "./Radio/src";
+export { Tabs, type TabsProps } from "./Tabs/src";
 export { Tag, type TagProps } from "./Tag/src";
-export { Toast, type ToastProps } from "./Toast/Toast";
-export { ToolTips, type ToolTipsProps } from "./ToolTip/ToolTips";
+export { Toast, type ToastProps } from "./Toast/src";
+export { ToolTips, type ToolTipsProps } from "./ToolTip/src";
+export { Typography, type TypographyProps } from "./Typography/src";

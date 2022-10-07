@@ -2,7 +2,7 @@
 // @ts-nocheck
 import React from "react";
 import { Position, Tooltip } from "react-tippy";
-import "react-tippy/dist/tippy.css";
+
 export interface ToolTipsProps {
   children: React.ReactNode;
   text: string;

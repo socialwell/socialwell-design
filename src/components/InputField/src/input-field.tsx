@@ -12,7 +12,8 @@ export interface InputTextProps {
   hasIcon?: boolean;
   isInvalid?: boolean;
   value: string;
-  name: string;
+  name?: string;
+  placeholder?: string;
   type: HTMLInputTypeAttribute;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -22,12 +23,14 @@ export interface SelectProps {
   size?: "md" | "lg";
   isInvalid?: boolean;
   value: string;
+  name?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export interface TextareaProps {
   isInvalid?: boolean;
   value: string;
+  name?: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -37,8 +40,9 @@ export const TextField: React.FC<InputTextProps> = ({
   isInvalid = false,
   value,
   onChange,
-  name,
+  name = "",
   type = "text",
+  placeholder,
   ...restProps
 }) => {
   return (
@@ -50,6 +54,7 @@ export const TextField: React.FC<InputTextProps> = ({
         name={name}
         type={type}
         onChange={onChange}
+        placeholder={placeholder}
       />
     </InputWrapper>
   );
@@ -59,6 +64,7 @@ export const SelectField: React.FC<SelectProps> = ({
   children,
   size = "md",
   isInvalid = false,
+  name = "",
   value,
   onChange,
   ...restProps
@@ -70,6 +76,7 @@ export const SelectField: React.FC<SelectProps> = ({
       onChange={onChange}
       inputSize={size}
       isInvalid={isInvalid}
+      name={name}
     >
       {children}
     </SelectInputField>
@@ -79,6 +86,7 @@ export const SelectField: React.FC<SelectProps> = ({
 export const TextAreaField: React.FC<TextareaProps> = ({
   isInvalid = false,
   value,
+  name = "",
   onChange,
   ...restProps
 }) => {
@@ -88,6 +96,7 @@ export const TextAreaField: React.FC<TextareaProps> = ({
       value={value}
       onChange={onChange}
       isInvalid={isInvalid}
+      name={name}
     ></TextAreaInputField>
   );
 };
