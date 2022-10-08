@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 export const AvatarImage = Template.bind({});
 
 AvatarImage.args = {
-  useName: "prabodh gedam",
+  useName: "john doe",
 };
 
 export const AvatarProfileImage = Template.bind({});

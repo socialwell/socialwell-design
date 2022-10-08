@@ -2,11 +2,12 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import React from "react";
 import { Button } from "../src";
 
+import { BtnLeftIcon } from "../../../assets";
+
 export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
-    icon: { control: "boolean", default: false },
     disabled: { control: "boolean", default: false },
   },
 } as ComponentMeta<typeof Button>;
@@ -19,6 +20,14 @@ export const SolidButton = Template.bind({});
 SolidButton.args = {
   variant: "solid",
   name: "Button",
+};
+
+export const SolidButtonWithIcon = Template.bind({});
+
+SolidButtonWithIcon.args = {
+  variant: "solid",
+  name: "Button",
+  icon: <BtnLeftIcon />,
 };
 
 export const OutlineButton = Template.bind({});

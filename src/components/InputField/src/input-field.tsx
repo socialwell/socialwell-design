@@ -1,5 +1,4 @@
-import React, { HTMLInputTypeAttribute } from "react";
-import { BtnLeftIcon } from "../../../assets";
+import React, { HTMLInputTypeAttribute, ReactNode } from "react";
 import {
   InputWrapper,
   TextInput,
@@ -9,7 +8,7 @@ import {
 
 export interface InputTextProps {
   size?: "md" | "lg";
-  hasIcon?: boolean;
+  icon?: ReactNode;
   isInvalid?: boolean;
   value: string;
   name?: string;
@@ -35,7 +34,7 @@ export interface TextareaProps {
 }
 
 export const TextField: React.FC<InputTextProps> = ({
-  hasIcon = false,
+  icon,
   size = "md",
   isInvalid = false,
   value,
@@ -47,7 +46,7 @@ export const TextField: React.FC<InputTextProps> = ({
 }) => {
   return (
     <InputWrapper inputSize={size} isInvalid={isInvalid}>
-      {hasIcon && <BtnLeftIcon />}
+      {icon}
       <TextInput
         {...restProps}
         value={value}

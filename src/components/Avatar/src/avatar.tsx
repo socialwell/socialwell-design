@@ -6,6 +6,8 @@ export interface AvatarProps {
   alt?: string;
   size: "sm" | "md" | "lg" | "xl" | "2xl";
   useName?: string;
+  background?: string;
+  color?: string;
 }
 const getSize = (size: string): number => {
   if (size === "sm") return 32;
@@ -20,6 +22,8 @@ export const Avatar: React.FC<AvatarProps> = ({
   alt = "",
   size = "lg",
   useName,
+  background = "#000",
+  color = "#fff",
 }) => {
   return (
     <Image
@@ -27,7 +31,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         src ||
         `https://ui-avatars.com/api/?name=${useName}&size=${getSize(
           size,
-        )}&background=285E61&color=fff`
+        )}&background=${background.slice(1)}&color=${color.slice(1)}`
       }
       alt={alt}
       size={size}

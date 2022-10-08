@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import React from "react";
 import { ToolTips } from "../src";
-
+import "react-tippy/dist/tippy.css";
 export default {
   title: "Components/Tooltips",
   component: ToolTips,

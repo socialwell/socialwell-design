@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import React from "react";
 import { IconButton } from "../src";
+import { BtnLeftIcon } from "../../../assets";
 
 export default {
   title: "Components/IconButton",
@@ -14,3 +15,7 @@ const Template: ComponentStory<typeof IconButton> = (args) => (
 );
 
 export const IconButtonPreview = Template.bind({});
+
+IconButtonPreview.args = {
+  icon: <BtnLeftIcon />,
+};

@@ -1,12 +1,11 @@
 import React from "react";
-import { BtnLeftIcon } from "../../../assets";
 import { MainButton, OutlineButton, SolidButton } from "./styles/buttonStyles";
 
 export interface ButtonProps {
   variant: "solid" | "outline";
   size?: "md" | "lg";
   name: string;
-  icon?: boolean;
+  icon?: React.ReactNode;
   type: "submit" | "button" | "reset";
   onClick?: () => void;
 }
@@ -15,7 +14,7 @@ export const Button: React.FC<ButtonProps> = ({
   variant,
   name,
   size = "md",
-  icon = false,
+  icon,
   type = "submit",
   onClick,
   ...restProps
@@ -23,7 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   if (variant === "solid") {
     return (
       <SolidButton size={size} type={type} onClick={onClick} {...restProps}>
-        {icon && <BtnLeftIcon />}
+        {icon}
         {name}
       </SolidButton>
     );
@@ -31,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
   if (variant === "outline") {
     return (
       <OutlineButton size={size} type={type} onClick={onClick} {...restProps}>
-        {icon && <BtnLeftIcon />}
+        {icon}
         {name}
       </OutlineButton>
     );

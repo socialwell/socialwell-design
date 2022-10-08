@@ -1,6 +1,6 @@
 {
   "name": "@socialwell-design/icon-button",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Icon Button component from socialwell ui library",
   "main": "dist/cjs/components/IconButton/src/index.js",
   "module": "dist/esm/components/IconButton/src/index.js",
