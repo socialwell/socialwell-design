@@ -42,6 +42,9 @@
     "react/react-in-jsx-scope": ["off"],
     // "react/jsx-props-no-spreading": ["warn"],
     "no-shadow": "off",
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "prettier/prettier": ["error",{
+      "endOfLine": "auto"}
+    ]
   }
 }

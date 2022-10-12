@@ -1,0 +1,12 @@
+# module install
+FROM node:16.17.0-alpine as module-install-stage
+# set working directory
+WORKDIR /app
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn install --frozen-lockfile
+COPY . .
+RUN yarn build
+
+# start app
+CMD ["npm", "run", "storybook"]
