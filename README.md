@@ -21,3 +21,15 @@ import { Button } from "socialwell-design";
   size="md" // md | lg
 />
 ```
+
+
+## Containerization
+
+## To build image without spinning up the conatiner
+
+docker build -f Dockerfile . -t socialwell/socialwell-design:<tag version>
+
+## Build socialwell-design docker image and spin up the container to test on localhost:6006
+
+docker-compose up
+
