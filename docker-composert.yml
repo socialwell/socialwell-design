@@ -1,0 +1,12 @@
+version: '3'
+services:
+  socialwell-design:
+    build:
+      context: ./app
+    ports:
+      - "6006:6006"
+    container_name: socialwell-design
+    stdin_open: true
+    volumes:
+       - ./app:/usr/src/app/app
+       - /usr/src/app/app/node_modules

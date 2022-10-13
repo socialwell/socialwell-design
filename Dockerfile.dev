@@ -1,10 +1,16 @@
 # module install
 FROM node:16.17.0-alpine as module-install-stage
+
 # set working directory
 WORKDIR /app
+# COPY package.json and yarn.lock to $PATH
 COPY package.json ./
 COPY yarn.lock ./
+
 RUN yarn install --frozen-lockfile
+
+
+# build
 COPY . .
 RUN yarn build
 
