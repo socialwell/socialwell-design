@@ -27,12 +27,19 @@ export const SolidButtonWithIcon = Template.bind({});
 SolidButtonWithIcon.args = {
   variant: "solid",
   name: "Button",
-  icon: <BtnLeftIcon />,
+  leftIcon: <BtnLeftIcon />,
 };
 
 export const OutlineButton = Template.bind({});
 
 OutlineButton.args = {
   variant: "outline",
+  name: "Button",
+};
+
+export const CustomButton = Template.bind({});
+
+CustomButton.args = {
+  variant: "custom",
   name: "Button",
 };

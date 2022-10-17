@@ -1,44 +1,105 @@
-import React from "react";
-import { MainButton, OutlineButton, SolidButton } from "./styles/buttonStyles";
+import React, { forwardRef } from "react";
+import {
+  CustomButton,
+  OutlineButton,
+  SolidButton,
+} from "./styles/buttonStyles";
 
-export interface ButtonProps {
-  variant: "solid" | "outline";
-  size?: "md" | "lg";
-  name: string;
-  icon?: React.ReactNode;
-  type: "submit" | "button" | "reset";
-  onClick?: () => void;
+export interface CustomButtonProps {
+  variant?: "custom";
+  backgroundColor: string;
+  color: string;
+  borderWidth: number;
+  paddingInline: number;
+  paddingBlock: number;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  variant,
-  name,
-  size = "md",
-  icon,
-  type = "submit",
-  onClick,
-  ...restProps
-}) => {
-  if (variant === "solid") {
-    return (
-      <SolidButton size={size} type={type} onClick={onClick} {...restProps}>
-        {icon}
-        {name}
-      </SolidButton>
-    );
-  }
-  if (variant === "outline") {
-    return (
-      <OutlineButton size={size} type={type} onClick={onClick} {...restProps}>
-        {icon}
-        {name}
-      </OutlineButton>
-    );
-  }
+export interface ColorButtonProps {
+  variant: "solid" | "outline";
+  backgroundColor?: string;
+  color?: string;
+  borderWidth?: number;
+  paddingInline?: number;
+  paddingBlock?: number;
+}
 
-  return (
-    <MainButton size={size} onClick={onClick}>
-      {name}
-    </MainButton>
-  );
-};
+export type ButtonProps = {
+  size?: "md" | "lg";
+  name: string;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  type: "submit" | "button" | "reset";
+  onClick?: () => void;
+} & (ColorButtonProps | CustomButtonProps);
+
+// eslint-disable-next-line react/display-name
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant,
+      name,
+      size = "md",
+      leftIcon,
+      rightIcon,
+      type = "submit",
+      onClick,
+      backgroundColor = "transparent",
+      color = "black",
+      borderWidth = 0,
+      paddingInline = 0,
+      paddingBlock = 0,
+      ...restProps
+    },
+    ref,
+  ) => {
+    if (variant === "solid") {
+      return (
+        <SolidButton
+          size={size}
+          type={type}
+          ref={ref}
+          onClick={onClick}
+          {...restProps}
+        >
+          {leftIcon}
+          {name}
+          {rightIcon}
+        </SolidButton>
+      );
+    }
+    if (variant === "outline") {
+      return (
+        <OutlineButton
+          size={size}
+          type={type}
+          ref={ref}
+          onClick={onClick}
+          {...restProps}
+        >
+          {leftIcon}
+          {name}
+          {rightIcon}
+        </OutlineButton>
+      );
+    }
+
+    return (
+      <CustomButton
+        ref={ref}
+        size={size}
+        type={type}
+        onClick={onClick}
+        backgroundColor={backgroundColor}
+        color={color}
+        borderWidth={borderWidth}
+        paddingInline={paddingInline}
+        paddingBlock={paddingBlock}
+        {...restProps}
+      >
+        {leftIcon}
+        {name}
+        {rightIcon}
+      </CustomButton>
+    );
+  },
+);

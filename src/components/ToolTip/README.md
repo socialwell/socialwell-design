@@ -3,11 +3,11 @@
 ## Installation
 
 ```bash
-yarn add @socialwell-design/tool-tip
+yarn add @socialwell-design/tool-tip react-tippy
 
 or
 
-npm i @socialwell-design/tool-tip
+npm i @socialwell-design/tool-tip react-tippy
 ```
 
 ## How to use

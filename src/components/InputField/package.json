@@ -1,10 +1,10 @@
 {
   "name": "@socialwell-design/input-field",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Input Field component from socialwell ui library",
-  "main": "dist/cjs/components/InputField/src/index.js",
-  "module": "dist/esm/components/InputField/src/index.js",
-  "types": "dist/types/components/InputField/src/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist",
     "src"

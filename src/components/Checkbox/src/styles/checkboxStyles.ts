@@ -1,74 +1,43 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const CheckboxField = styled.input`
+export const Label = styled.label``;
+export const CheckboxInput = styled.input`
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
   position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+  white-space: nowrap;
 `;
 
-export const CheckboxContainer = styled.label`
-  box-sizing: border-box;
+interface CheckboxProps {
+  isActive: boolean;
+  disabled: boolean;
+  checkboxColor: string;
+  size: number;
+}
 
-  position: relative;
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background: #ffffff;
-    border: 2px solid #e2e8f0;
-    border-radius: 2px;
-  }
+export const Span = styled.svg<CheckboxProps>`
+  display: inline-block;
+  width: ${(props) => props.size}px;
+  height: ${(props) => props.size}px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  margin-right: 4px;
+  border-radius: 2px;
 
-  .checkmark:after {
-    left: 5px;
-    top: 2px;
-    width: 6px;
-    height: 10px;
-    border: solid white;
-    border-radius: 2px;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+  ${(props) =>
+    props.isActive &&
+    css<CheckboxProps>`
+      border-color: ${(props) => props.checkboxColor};
+      background-color: ${(props) => props.checkboxColor};
+    `}
 
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-
-  .checkmark:hover {
-    background-color: #2b6cb0;
-  }
-
-  .checkmark:hover:after {
-    display: block;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-  }
-
-  ${CheckboxField}:checked ~ .checkmark {
-    background-color: #3182ce;
-  }
-
-  ${CheckboxField}:checked ~ .checkmark:after {
-    display: block;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-  }
-
-  ${CheckboxField}:disabled ~ .checkmark {
-    background-color: #e2e8f0;
-  }
-
-  ${CheckboxField}:checked:disabled ~ .checkmark:after {
-    display: block;
-    border: solid #718096;
-    border-width: 0 3px 3px 0;
-  }
+  ${(props) =>
+    props.disabled &&
+    css`
+      border-color: #e2e8f0;
+      background-color: #e2e8f0;
+    `}
 `;
