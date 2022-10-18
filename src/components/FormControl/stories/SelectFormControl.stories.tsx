@@ -1,14 +1,14 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import React from "react";
-import { SelectField } from "../src";
+
+import { SelectFormControl } from "../src";
 export default {
-  title: "Components/InputField",
-  component: SelectField,
+  title: "Components/SelectFormControl",
+  component: SelectFormControl,
   argTypes: {
     disabled: { control: "boolean", default: false },
-    // isInvalid: { control: "boolean", default: false },
   },
-} as ComponentMeta<typeof SelectField>;
+} as ComponentMeta<typeof SelectFormControl>;
 
 const options = [
   { label: "First", value: 1 },
@@ -18,22 +18,25 @@ const options = [
   { label: "Fifth", value: 5 },
 ];
 
-const Template: ComponentStory<typeof SelectField> = (args) => {
-  return <SelectField {...args} />;
-};
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof SelectFormControl> = (args) => (
+  <SelectFormControl {...args} />
+);
 
-export const SelectInput = Template.bind({});
+export const SelectFormWithLabel = Template.bind({});
 
-SelectInput.args = {
+SelectFormWithLabel.args = {
+  label: "form label",
   multiple: false,
   value: { label: "First", value: 1 },
   onChange: () => console.log("log"),
   options: options,
 };
 
-export const MultiSelectInput = Template.bind({});
+export const MultiSelectFormWithLabel = Template.bind({});
 
-MultiSelectInput.args = {
+MultiSelectFormWithLabel.args = {
+  label: "form label",
   multiple: true,
   options: options,
   value: [

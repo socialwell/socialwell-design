@@ -10,7 +10,12 @@ export {
   type SwitchProps,
 } from "./Checkbox/src";
 export { CloseButton } from "./CloseButton/src";
-export { FormControl, type FormControlProps } from "./FormControl/src";
+export {
+  FormControl,
+  SelectFormControl,
+  type FormControlProps,
+  type SelectFormControlProps,
+} from "./FormControl/src";
 export { IconButton, type IconButtonProps } from "./IconButton/src";
 export {
   TextField,

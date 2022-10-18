@@ -15,7 +15,7 @@ export interface CustomButtonProps {
 }
 
 export interface ColorButtonProps {
-  variant: "solid" | "outline";
+  variant?: "solid" | "outline";
   backgroundColor?: string;
   color?: string;
   borderWidth?: number;
@@ -32,11 +32,10 @@ export type ButtonProps = {
   onClick?: () => void;
 } & (ColorButtonProps | CustomButtonProps);
 
-// eslint-disable-next-line react/display-name
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      variant,
+      variant = "custom",
       name,
       size = "md",
       leftIcon,
@@ -51,7 +50,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       ...restProps
     },
     ref,
-  ) => {
+  ): JSX.Element => {
     if (variant === "solid") {
       return (
         <SolidButton
