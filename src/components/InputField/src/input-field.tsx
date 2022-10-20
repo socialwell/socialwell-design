@@ -36,6 +36,7 @@ export interface TextareaProps {
   isInvalid?: boolean;
   value: string;
   name?: string;
+  placeholder?: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -228,6 +229,7 @@ export const TextAreaField: React.FC<TextareaProps> = ({
   value,
   name = "",
   onChange,
+  placeholder,
   ...restProps
 }) => {
   return (
@@ -237,6 +239,7 @@ export const TextAreaField: React.FC<TextareaProps> = ({
       onChange={onChange}
       isInvalid={isInvalid}
       name={name}
+      placeholder={placeholder}
     ></TextAreaInputField>
   );
 };

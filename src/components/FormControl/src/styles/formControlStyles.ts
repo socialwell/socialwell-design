@@ -61,6 +61,7 @@ export const SelectInputField = styled.div<{ disabled: boolean }>`
     props.disabled &&
     css`
       cursor: not-allowed;
+      user-select: none;
     `}
 
   &:focus {

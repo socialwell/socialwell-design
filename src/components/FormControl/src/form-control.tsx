@@ -20,6 +20,7 @@ export interface FormControlProps {
   type?: HTMLInputTypeAttribute;
   value: string;
   name: string;
+  placeholder?: string;
   onChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -34,13 +35,20 @@ export const FormControl: React.FC<FormControlProps> = ({
   name,
   value,
   type = "text",
+  placeholder,
   onChange,
 }) => {
   if (inputType === "textarea") {
     return (
       <FormControlWrapper>
         <Label htmlFor={label}>{label}</Label>
-        <Textarea id={label} value={value} name={name} onChange={onChange} />
+        <Textarea
+          id={label}
+          value={value}
+          name={name}
+          placeholder={placeholder}
+          onChange={onChange}
+        />
       </FormControlWrapper>
     );
   }
@@ -54,6 +62,7 @@ export const FormControl: React.FC<FormControlProps> = ({
         name={name}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
       />
     </FormControlWrapper>
   );
@@ -95,14 +104,11 @@ export const SelectFormControl: React.FC<SelectFormControlProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   function clearOptions() {
-    if (disabled) return;
     multiple ? onChange([]) : onChange(undefined);
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function selectOption(option: SelectOption) {
-    if (disabled) return;
-
     if (multiple) {
       if (value.includes(option)) {
         onChange(value.filter((o) => o !== option));
@@ -115,7 +121,6 @@ export const SelectFormControl: React.FC<SelectFormControlProps> = ({
   }
 
   function isOptionSelected(option: SelectOption) {
-    if (disabled) return;
     return multiple ? value.includes(option) : option === value;
   }
 
@@ -125,7 +130,6 @@ export const SelectFormControl: React.FC<SelectFormControlProps> = ({
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (disabled) return;
       if (e.target !== containerRef.current) return;
       switch (e.code) {
         case "Enter":
@@ -197,26 +201,24 @@ export const SelectFormControl: React.FC<SelectFormControlProps> = ({
         </button>
         <div className="divider"></div>
         <div className="caret"></div>
-        {!disabled && (
-          <ul className={`options ${isOpen ? "show" : ""}`}>
-            {options.map((option, index) => (
-              <li
-                onClick={(e) => {
-                  e.stopPropagation();
-                  selectOption(option);
-                  setIsOpen(false);
-                }}
-                onMouseEnter={() => setHighlightedIndex(index)}
-                key={option.value}
-                className={`option ${
-                  isOptionSelected(option) ? "selected" : ""
-                } ${index === highlightedIndex ? "highlighted" : ""}`}
-              >
-                {option.label}
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className={`options ${isOpen ? "show" : ""}`}>
+          {options.map((option, index) => (
+            <li
+              onClick={(e) => {
+                e.stopPropagation();
+                selectOption(option);
+                setIsOpen(false);
+              }}
+              onMouseEnter={() => setHighlightedIndex(index)}
+              key={option.value}
+              className={`option ${
+                isOptionSelected(option) ? "selected" : ""
+              } ${index === highlightedIndex ? "highlighted" : ""}`}
+            >
+              {option.label}
+            </li>
+          ))}
+        </ul>
       </SelectInputField>
     </SelectWrapper>
   );
