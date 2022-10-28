@@ -16,6 +16,13 @@ export const Label = styled.label`
   margin-bottom: 8px;
 `;
 
+export const WithError = styled.div`
+  width: 100%;
+  small {
+    color: red;
+  }
+`;
+
 export const Input = styled.input<{ inputSize: string }>`
   box-sizing: border-box;
 

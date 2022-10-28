@@ -28,11 +28,11 @@ export const InputWrapper = styled.div<Props>`
 
   width: 100%;
   height: ${(props) => getSize(props.inputSize)};
+
+  padding: 0px 16px;
   display: flex;
   align-items: center;
-  padding: 0px 16px;
   gap: 16px;
-
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
@@ -56,6 +56,13 @@ export const InputWrapper = styled.div<Props>`
     css`
       border: 2px solid #e53e3e;
     `}
+`;
+
+export const WithError = styled.div`
+  width: 100%;
+  small {
+    color: red;
+  }
 `;
 
 export const SelectInputField = styled.div<{ disabled: boolean }>`

@@ -1,7 +1,7 @@
 {
-  "name": "@socialwell-design/form-control",
-  "version": "1.0.4",
-  "description": "Form Control component from socialwell ui library",
+  "name": "@socialwell-design/editor",
+  "version": "0.1.1",
+  "description": "Rich Text Editor component from socialwell ui library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
@@ -23,6 +23,12 @@
   "author": "Socialwell",
   "license": "MIT",
   "dependencies": {
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "react-quill": "^2.0.0",
+    "quill-image-resize-module-ts": "^3.0.3"
+  },
+  "peerDependencies": {
+    "react-quill": "^2.0.0",
+    "quill-image-resize-module-ts": "^3.0.3"
   }
 }

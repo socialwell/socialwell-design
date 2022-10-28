@@ -1,5 +1,6 @@
 import React, {
   HTMLInputTypeAttribute,
+  ReactNode,
   useEffect,
   useRef,
   useState,
@@ -11,6 +12,7 @@ import {
   SelectInputField,
   SelectWrapper,
   Textarea,
+  WithError,
 } from "./styles/formControlStyles";
 
 export interface FormControlProps {
@@ -21,6 +23,7 @@ export interface FormControlProps {
   value: string;
   name: string;
   placeholder?: string;
+  hasError?: ReactNode;
   onChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -36,35 +39,42 @@ export const FormControl: React.FC<FormControlProps> = ({
   value,
   type = "text",
   placeholder,
+  hasError,
   onChange,
 }) => {
   if (inputType === "textarea") {
     return (
-      <FormControlWrapper>
-        <Label htmlFor={label}>{label}</Label>
-        <Textarea
-          id={label}
-          value={value}
-          name={name}
-          placeholder={placeholder}
-          onChange={onChange}
-        />
-      </FormControlWrapper>
+      <WithError>
+        <FormControlWrapper>
+          <Label htmlFor={label}>{label}</Label>
+          <Textarea
+            id={label}
+            value={value}
+            name={name}
+            placeholder={placeholder}
+            onChange={onChange}
+          />
+        </FormControlWrapper>
+        {hasError}
+      </WithError>
     );
   }
   return (
-    <FormControlWrapper>
-      <Label htmlFor={label}>{label}</Label>
-      <Input
-        inputSize={size}
-        type={type}
-        id={label}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
-    </FormControlWrapper>
+    <WithError>
+      <FormControlWrapper>
+        <Label htmlFor={label}>{label}</Label>
+        <Input
+          inputSize={size}
+          type={type}
+          id={label}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+      </FormControlWrapper>
+      {hasError}
+    </WithError>
   );
 };
 

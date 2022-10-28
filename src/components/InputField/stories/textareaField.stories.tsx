@@ -16,3 +16,7 @@ const Template: ComponentStory<typeof TextAreaField> = (args) => (
 );
 
 export const TextAreaInput = Template.bind({});
+
+TextAreaInput.args = {
+  hasError: <small>this is an error</small>,
+};

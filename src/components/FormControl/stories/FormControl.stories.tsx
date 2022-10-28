@@ -20,6 +20,7 @@ export const TextInput = Template.bind({});
 TextInput.args = {
   label: "Label",
   type: "text",
+  hasError: <small>this is an error</small>,
 };
 
 export const Textarea = Template.bind({});

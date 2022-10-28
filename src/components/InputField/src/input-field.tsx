@@ -10,6 +10,7 @@ import {
   TextInput,
   SelectInputField,
   TextAreaInputField,
+  WithError,
 } from "./styles/inputFieldStyles";
 
 export interface InputTextProps {
@@ -19,6 +20,7 @@ export interface InputTextProps {
   value: string;
   name?: string;
   placeholder?: string;
+  hasError?: ReactNode;
   type: HTMLInputTypeAttribute;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -37,6 +39,7 @@ export interface TextareaProps {
   value: string;
   name?: string;
   placeholder?: string;
+  hasError?: ReactNode;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -49,20 +52,24 @@ export const TextField: React.FC<InputTextProps> = ({
   name = "",
   type = "text",
   placeholder,
+  hasError,
   ...restProps
 }) => {
   return (
-    <InputWrapper inputSize={size} isInvalid={isInvalid}>
-      {icon}
-      <TextInput
-        {...restProps}
-        value={value}
-        name={name}
-        type={type}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
-    </InputWrapper>
+    <WithError>
+      <InputWrapper inputSize={size} isInvalid={isInvalid}>
+        {icon}
+        <TextInput
+          {...restProps}
+          value={value}
+          name={name}
+          type={type}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+      </InputWrapper>
+      {hasError}
+    </WithError>
   );
 };
 
@@ -230,16 +237,20 @@ export const TextAreaField: React.FC<TextareaProps> = ({
   name = "",
   onChange,
   placeholder,
+  hasError,
   ...restProps
 }) => {
   return (
-    <TextAreaInputField
-      {...restProps}
-      value={value}
-      onChange={onChange}
-      isInvalid={isInvalid}
-      name={name}
-      placeholder={placeholder}
-    ></TextAreaInputField>
+    <WithError>
+      <TextAreaInputField
+        {...restProps}
+        value={value}
+        onChange={onChange}
+        isInvalid={isInvalid}
+        name={name}
+        placeholder={placeholder}
+      ></TextAreaInputField>
+      {hasError}
+    </WithError>
   );
 };
