@@ -87,7 +87,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         size={size}
         type={type}
-        onClick={onClick}
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick?.call(e);
+        }}
         backgroundColor={backgroundColor}
         color={color}
         borderWidth={borderWidth}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled, { css } from "styled-components";
 
 export const FormControlWrapper = styled.div`
@@ -23,7 +24,7 @@ export const WithError = styled.div`
   }
 `;
 
-export const Input = styled.input<{ inputSize: string }>`
+export const Input = styled.input<any>`
   box-sizing: border-box;
 
   width: 100%;
@@ -211,7 +212,7 @@ export const SelectInputField = styled.div<{ disabled: boolean }>`
   }
 `;
 
-export const Textarea = styled.textarea`
+export const Textarea = styled.textarea<any>`
   box-sizing: border-box;
 
   width: 100%;

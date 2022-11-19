@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {
+  forwardRef,
   HTMLInputTypeAttribute,
   ReactNode,
   useEffect,
@@ -22,7 +24,11 @@ export interface InputTextProps {
   placeholder?: string;
   hasError?: ReactNode;
   type: HTMLInputTypeAttribute;
+  min?: number;
+  max?: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 // export interface SelectProps {
@@ -34,44 +40,47 @@ export interface InputTextProps {
 //   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 // }
 
-export interface TextareaProps {
-  isInvalid?: boolean;
-  value: string;
-  name?: string;
-  placeholder?: string;
-  hasError?: ReactNode;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-}
-
-export const TextField: React.FC<InputTextProps> = ({
-  icon,
-  size = "md",
-  isInvalid = false,
-  value,
-  onChange,
-  name = "",
-  type = "text",
-  placeholder,
-  hasError,
-  ...restProps
-}) => {
-  return (
-    <WithError>
-      <InputWrapper inputSize={size} isInvalid={isInvalid}>
-        {icon}
-        <TextInput
-          {...restProps}
-          value={value}
-          name={name}
-          type={type}
-          onChange={onChange}
-          placeholder={placeholder}
-        />
-      </InputWrapper>
-      {hasError}
-    </WithError>
-  );
-};
+export const TextField = forwardRef<HTMLInputElement, InputTextProps>(
+  (props, ref) => {
+    const {
+      icon,
+      size = "md",
+      isInvalid = false,
+      value,
+      onChange,
+      onBlur,
+      onFocus,
+      name = "",
+      type = "text",
+      placeholder,
+      min,
+      max,
+      hasError,
+      ...restProps
+    } = props as any;
+    return (
+      <WithError>
+        <InputWrapper inputSize={size} isInvalid={isInvalid}>
+          {icon}
+          <TextInput
+            ref={ref}
+            value={value}
+            name={name}
+            type={type}
+            min={min}
+            max={max}
+            onChange={onChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            placeholder={placeholder}
+            {...restProps}
+          />
+        </InputWrapper>
+        {hasError}
+      </WithError>
+    );
+  },
+);
 
 export type SelectOption = {
   label: string;
@@ -183,6 +192,7 @@ export const SelectField: React.FC<SelectProps> = ({
         {multiple
           ? value.map((v) => (
               <button
+                type="button"
                 key={v.value}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -197,6 +207,7 @@ export const SelectField: React.FC<SelectProps> = ({
           : value?.label}
       </span>
       <button
+        type="button"
         onClick={(e) => {
           e.stopPropagation();
           clearOptions();
@@ -231,26 +242,46 @@ export const SelectField: React.FC<SelectProps> = ({
   );
 };
 
-export const TextAreaField: React.FC<TextareaProps> = ({
-  isInvalid = false,
-  value,
-  name = "",
-  onChange,
-  placeholder,
-  hasError,
-  ...restProps
-}) => {
-  return (
-    <WithError>
-      <TextAreaInputField
-        {...restProps}
-        value={value}
-        onChange={onChange}
-        isInvalid={isInvalid}
-        name={name}
-        placeholder={placeholder}
-      ></TextAreaInputField>
-      {hasError}
-    </WithError>
-  );
-};
+export interface TextareaProps {
+  isInvalid?: boolean;
+  value: string;
+  name?: string;
+  placeholder?: string;
+  hasError?: ReactNode;
+  ref?: any;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+}
+
+export const TextAreaField = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  (props, ref) => {
+    const {
+      isInvalid = false,
+      value,
+      name = "",
+      placeholder,
+      hasError,
+      onChange,
+      onBlur,
+      onFocus,
+      ...restProps
+    } = props as any;
+    return (
+      <WithError>
+        <TextAreaInputField
+          {...restProps}
+          ref={ref}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          isInvalid={isInvalid}
+          name={name}
+          placeholder={placeholder}
+        ></TextAreaInputField>
+        {hasError}
+      </WithError>
+    );
+  },
+);

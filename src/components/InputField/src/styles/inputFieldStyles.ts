@@ -5,9 +5,9 @@ interface Props {
   isInvalid: boolean;
 }
 
-interface TextareaProps {
-  isInvalid: boolean;
-}
+// interface TextareaProps {
+//   isInvalid: boolean;
+// }
 
 export const TextInput = styled.input`
   width: 100%;
@@ -223,7 +223,8 @@ export const SelectInputField = styled.div<{ disabled: boolean }>`
   }
 `;
 
-export const TextAreaInputField = styled.textarea<TextareaProps>`
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const TextAreaInputField = styled.textarea<any>`
   width: 100%;
   box-sizing: border-box;
 

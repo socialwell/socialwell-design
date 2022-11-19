@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {
+  forwardRef,
   HTMLInputTypeAttribute,
   ReactNode,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -22,6 +25,8 @@ export interface FormControlProps {
   type?: HTMLInputTypeAttribute;
   value: string;
   name: string;
+  min?: number;
+  max?: number;
   placeholder?: string;
   hasError?: ReactNode;
   onChange: (
@@ -29,30 +34,54 @@ export interface FormControlProps {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
+  onBlur?: (
+    e:
+      | React.FocusEvent<HTMLInputElement>
+      | React.FocusEvent<HTMLTextAreaElement>,
+  ) => void;
+  onFocus?: (
+    e:
+      | React.FocusEvent<HTMLInputElement>
+      | React.FocusEvent<HTMLTextAreaElement>,
+  ) => void;
 }
 
-export const FormControl: React.FC<FormControlProps> = ({
-  inputType = "text",
-  size = "md",
-  label,
-  name,
-  value,
-  type = "text",
-  placeholder,
-  hasError,
-  onChange,
-}) => {
+export const FormControl = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  FormControlProps
+>((props, ref): JSX.Element => {
+  const {
+    inputType = "text",
+    size = "md",
+    label,
+    name,
+    value,
+    type = "text",
+    placeholder,
+    min,
+    max,
+    hasError,
+    onChange,
+    onBlur,
+    onFocus,
+  } = props;
+  const labelId = useMemo(() => `${label}-${Math.random() * 9999}`, [label]);
   if (inputType === "textarea") {
     return (
       <WithError>
         <FormControlWrapper>
-          <Label htmlFor={label}>{label}</Label>
+          <Label htmlFor={labelId}>{label}</Label>
           <Textarea
-            id={label}
+            id={labelId}
             value={value}
             name={name}
+            max={max}
+            ref={ref}
+            min={min}
             placeholder={placeholder}
             onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
           />
         </FormControlWrapper>
         {hasError}
@@ -62,21 +91,26 @@ export const FormControl: React.FC<FormControlProps> = ({
   return (
     <WithError>
       <FormControlWrapper>
-        <Label htmlFor={label}>{label}</Label>
+        <Label htmlFor={labelId}>{label}</Label>
         <Input
           inputSize={size}
           type={type}
-          id={label}
+          id={labelId}
           name={name}
           value={value}
-          onChange={onChange}
+          max={max}
+          ref={ref}
+          min={min}
           placeholder={placeholder}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
         />
       </FormControlWrapper>
       {hasError}
     </WithError>
   );
-};
+});
 
 export type SelectOption = {
   label: string;
@@ -187,6 +221,7 @@ export const SelectFormControl: React.FC<SelectFormControlProps> = ({
           {multiple
             ? value.map((v) => (
                 <button
+                  type="button"
                   key={v.value}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -201,6 +236,7 @@ export const SelectFormControl: React.FC<SelectFormControlProps> = ({
             : value?.label}
         </span>
         <button
+          type="button"
           onClick={(e) => {
             e.stopPropagation();
             clearOptions();
