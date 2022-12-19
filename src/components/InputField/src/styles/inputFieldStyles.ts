@@ -65,7 +65,12 @@ export const WithError = styled.div`
   }
 `;
 
-export const SelectInputField = styled.div<{ disabled: boolean }>`
+export const SelectInputField = styled.div<{
+  disabled: boolean;
+  imageSize?: string;
+  themeHsl: number;
+  saturation?: string;
+}>`
   position: relative;
   width: 100%;
   min-height: 1.5em;
@@ -154,18 +159,47 @@ export const SelectInputField = styled.div<{ disabled: boolean }>`
     display: block;
   }
 
+  .thumbnail {
+    width: ${(props) => props.imageSize};
+    height: ${(props) => props.imageSize};
+    border-radius: 100%;
+  }
+
+  .designation {
+    font-size: 0.8em;
+    color: #777;
+    font-weight: 200;
+  }
+
   .option {
     padding: 0.25em 0.5em;
     cursor: pointer;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    font-weight: 500;
   }
 
   .option.selected {
-    background-color: hsl(200, 100%, 70%);
+    background-color: hsl(
+      ${(props) => props.themeHsl},
+      ${(props) => props.saturation},
+      70%
+    );
   }
 
   .option.highlighted {
-    background-color: hsl(200, 100%, 50%);
+    background-color: hsl(
+      ${(props) => props.themeHsl},
+      ${(props) => props.saturation},
+      50%
+    );
     color: white;
+  }
+
+  .option.selected .designation,
+  .option.highlighted .designation {
+    color: #fff;
   }
 
   .option-badge {

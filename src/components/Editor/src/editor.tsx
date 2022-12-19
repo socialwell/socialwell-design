@@ -1,9 +1,11 @@
 import React from "react";
-import ReactQuill from "react-quill";
+import ReactQuill, { Quill } from "react-quill";
 import { DeltaStatic, Sources, StringMap } from "quill";
-// import { ImageResize } from "quill-image-resize-module-ts";
-// Quill.register("modules/imageResize", ImageResize);
-
+import { ImageResize } from "quill-image-resize-module-ts";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const DragAndDropModule = require("quill-drag-and-drop-module");
+Quill.register("modules/imageResize", ImageResize);
+Quill.register("modules/dragAndDropModule", DragAndDropModule);
 const modules: StringMap = {
   toolbar: [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -22,10 +24,24 @@ const modules: StringMap = {
     // toggle to add extra line breaks when pasting HTML:
     matchVisual: false,
   },
-  //   imageResize: {
-  //     parchment: Quill.import("parchment"),
-  //     modules: ["Resize", "DisplaySize"],
-  //   },
+  imageResize: {
+    parchment: Quill.import("parchment"),
+    modules: ["Resize", "DisplaySize"],
+  },
+  dragAndDrop: {
+    draggables: [
+      {
+        content_type_pattern: "^image/", // Any file with matching type will result in ...
+        tag: "img", // ... an 'img' tag ...
+        attr: "src", // ... with 'src' equal to the file's base64 (or the result of `onDrop` [see below]).
+      },
+      {
+        content_type_pattern: "^files/", // Any file with matching type will result in ...
+        tag: "a", // ... an 'img' tag ...
+        attr: "href", // ... with 'src' equal to the file's base64 (or the result of `onDrop` [see below]).
+      },
+    ],
+  },
 };
 
 /*

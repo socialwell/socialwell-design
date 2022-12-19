@@ -31,3 +31,6 @@ export { Tag, type TagProps } from "./Tag/src";
 export { Toast, type ToastProps } from "./Toast/src";
 export { ToolTips, type ToolTipsProps } from "./ToolTip/src";
 export { Typography, type TypographyProps } from "./Typography/src";
+export { FormContainer, type FormContainerProps } from "./FormContainer/src";
+export { FormHeader, type FormHeaderProps } from "./FormHeader/src";
+export { Flex, type FlexProps } from "./FlexBox/src";

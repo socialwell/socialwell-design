@@ -29,6 +29,7 @@ export interface FormControlProps {
   max?: number;
   placeholder?: string;
   hasError?: ReactNode;
+  readonly?: boolean;
   onChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -61,6 +62,7 @@ export const FormControl = forwardRef<
     min,
     max,
     hasError,
+    readonly = false,
     onChange,
     onBlur,
     onFocus,
@@ -72,6 +74,7 @@ export const FormControl = forwardRef<
         <FormControlWrapper>
           <Label htmlFor={labelId}>{label}</Label>
           <Textarea
+            readOnly={readonly}
             id={labelId}
             value={value}
             name={name}
@@ -93,6 +96,7 @@ export const FormControl = forwardRef<
       <FormControlWrapper>
         <Label htmlFor={labelId}>{label}</Label>
         <Input
+          readOnly={readonly}
           inputSize={size}
           type={type}
           id={labelId}

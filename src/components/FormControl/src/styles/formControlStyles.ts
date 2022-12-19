@@ -220,7 +220,7 @@ export const Textarea = styled.textarea<any>`
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
-  padding: 0px 16px;
+  padding: 8px 16px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;

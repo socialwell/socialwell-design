@@ -26,6 +26,7 @@ export interface InputTextProps {
   type: HTMLInputTypeAttribute;
   min?: number;
   max?: number;
+  readonly?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -56,6 +57,7 @@ export const TextField = forwardRef<HTMLInputElement, InputTextProps>(
       min,
       max,
       hasError,
+      readonly = false,
       ...restProps
     } = props as any;
     return (
@@ -64,6 +66,7 @@ export const TextField = forwardRef<HTMLInputElement, InputTextProps>(
           {icon}
           <TextInput
             ref={ref}
+            readOnly={readonly}
             value={value}
             name={name}
             type={type}
@@ -85,6 +88,15 @@ export const TextField = forwardRef<HTMLInputElement, InputTextProps>(
 export type SelectOption = {
   label: string;
   value: string | number;
+  thumbnail?: string;
+  designation?: string;
+};
+
+export type SelectOptionWithUser = {
+  label: string;
+  value: string | number;
+  thumbnail?: string;
+  designation?: string;
 };
 
 type MultipleSelectProps = {
@@ -102,6 +114,9 @@ type SingleSelectProps = {
 export type SelectProps = {
   options: SelectOption[];
   disabled?: boolean;
+  imageSize?: string;
+  themeHsl?: number;
+  themeHslSaturation?: string;
 } & (SingleSelectProps | MultipleSelectProps);
 
 export const SelectField: React.FC<SelectProps> = ({
@@ -110,6 +125,9 @@ export const SelectField: React.FC<SelectProps> = ({
   onChange,
   options,
   disabled = false,
+  imageSize = "20px",
+  themeHsl = 200,
+  themeHslSaturation = "100%",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -187,6 +205,9 @@ export const SelectField: React.FC<SelectProps> = ({
       onClick={() => setIsOpen((prev) => !prev)}
       tabIndex={0}
       disabled={disabled}
+      imageSize={imageSize}
+      saturation={themeHslSaturation}
+      themeHsl={themeHsl}
     >
       <span className="value">
         {multiple
@@ -233,7 +254,18 @@ export const SelectField: React.FC<SelectProps> = ({
                 isOptionSelected(option) ? "selected" : ""
               } ${index === highlightedIndex ? "highlighted" : ""}`}
             >
+              {option.thumbnail && (
+                <img
+                  className="thumbnail"
+                  src={option.thumbnail}
+                  alt={option.label}
+                  aria-hidden="true"
+                />
+              )}
               {option.label}
+              {option.designation && (
+                <span className="designation">{option.designation}</span>
+              )}
             </li>
           ))}
         </ul>
@@ -248,6 +280,7 @@ export interface TextareaProps {
   name?: string;
   placeholder?: string;
   hasError?: ReactNode;
+  readonly?: boolean;
   ref?: any;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -265,6 +298,7 @@ export const TextAreaField = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onChange,
       onBlur,
       onFocus,
+      readonly = false,
       ...restProps
     } = props as any;
     return (
@@ -279,6 +313,7 @@ export const TextAreaField = forwardRef<HTMLTextAreaElement, TextareaProps>(
           isInvalid={isInvalid}
           name={name}
           placeholder={placeholder}
+          readOnly={readonly}
         ></TextAreaInputField>
         {hasError}
       </WithError>

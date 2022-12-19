@@ -11,7 +11,12 @@ export default {
 } as ComponentMeta<typeof SelectField>;
 
 const options = [
-  { label: "First", value: 1 },
+  {
+    label: "First",
+    value: 1,
+    thumbnail: "https://picsum.photos/200",
+    designation: "First University",
+  },
   { label: "Second", value: 2 },
   { label: "Third", value: 3 },
   { label: "Fourth", value: 4 },
